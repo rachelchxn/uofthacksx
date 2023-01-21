@@ -7,10 +7,13 @@ function App() {
         <meta name = 'viewport' content = 'with = device-width' initial-scale = '1.0'></meta>
         <link rel = "stylesheet" href = "App.css"></link>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+        <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet"></link>
       </head>
   
       <section class = 'header'>
-        <nav>
+          <nav>
             <div class = 'logo-img'>
               <u1>
                 <a href = "index.html"><img src = ""></img></a>
@@ -18,7 +21,7 @@ function App() {
             </div>
             <div class = 'nav-bar'>
               <ul>
-                <li><a href = ''>TEAM</a></li>
+                <li><a href = ''>HOME</a></li>
                 <li><a href = ''>APPLICATION</a></li>
                 <li><a href = ''>PROCESS</a></li>
                 <li><a href = ''>CONTACT</a></li>
@@ -26,25 +29,35 @@ function App() {
             </div>
           </nav>
           <h1 class ='upload'>Video Upload</h1>
-          //need method
           <form action = "./" method = ''>
             <div class = "search-bar">
-              <input type = 'text' class = 'search-bar-input' name = 'search' placeholder = 'Upload mp3/wav File'></input>
-             
+              <input type="text" id = "link-input" class="search-bar-input" name="upload" placeholder="Upload Files"></input>
               <button type = 'submit' class = 'search-bar-button'>
                 <i class = "material-icons">upload</i>
               </button>
             </div>
-            <div class = "text-box">
-              
-              <p class = 'output' id = 'output1'></p>
-            </div>
           </form>
       </section>
-      <section class = 'nav-team'>
-        <h1>
-
-        </h1>
+      <section class = 'nav-application'>
+          <section class = 'application-title'>
+            Real World Application
+          </section>
+          <section class = 'application-paragraph'>
+            This program allows for educational videos/lectures to be converted into notes. This allows students to be able to save time when writing down information. 
+          </section>
+      </section>
+      <section class = 'nav-process'>
+          <section class = 'process-paragraph'>
+            THE INFORMATION IS FED THROUGH COHERE AND THEN BOOM BAM NOTES!!!
+          </section>
+          <section class = 'process-title'>
+            The Process
+          </section>
+      </section>
+      <section class = 'our-team'>
+        <section class = 'team-title'>
+          
+        </section>
       </section>
     </div>
   );
