@@ -4,6 +4,7 @@ import os
 
 load_dotenv()
 
+# have to put api key in .env
 co = cohere.Client(os.getenv('API_KEY'))
 
 # wikipedia page for machine learning
@@ -17,10 +18,13 @@ Some implementations of machine learning use data and neural networks in a way t
 
 In its application across business problems, machine learning is also referred to as predictive analytics."""
 
-response = co.generate(
-    prompt=prompt,
-    max_tokens=40,
-)
+l = []
+for i in range(10):
+    response = co.generate(
+        prompt=prompt,
+        max_tokens=40,
+    )
+    l.append(response)
 
-
-print(response[0].text)
+for x in l:
+    print(x[0].text)
