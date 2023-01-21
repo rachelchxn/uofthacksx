@@ -1,5 +1,12 @@
-from testcohere import *
+import cohere
+from dotenv import load_dotenv
+import os
+import pandas as pd
 
+load_dotenv()
+
+# have to put api key in .env
+co = cohere.Client(os.getenv('API_KEY_COHERE'))
 from cohere.classify import Example
 
 a = 'main concept'
@@ -26,7 +33,7 @@ examples=[
   Example("An example of a graph of a non-function is shown here", c),
   Example("The industrial revolution is an example of an important era", c),
   Example("John Smith is an example of an important theorist", c),
-  Example("This topic is one of the topics that will appear on your midterm exam", c),
+  Example("This topic is an example of one that will appear on your midterm exam", c),
   Example("i.e. The user experience", c),
   
   Example("Electrons are stable subatomic particle with a charge of negative electricity, found in all atoms and acting as the primary carrier of electricity in solidsThe mitocondria is an organelle found in large numbers in most cells.",d),
