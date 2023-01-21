@@ -7,6 +7,13 @@ def members(request):
 
 def downloadyoutube(request):
     audio = CoolClass()
+    print('download request')
     #audio.test()
-    link = request.GET["link"]
-    return HttpResponse(200)
+    try:
+        link = request.GET["link"]
+        print(link)
+        audio.download_file(link)
+        return HttpResponse('worked')
+    except:
+        print('failed')
+        return HttpResponse('invalid url')

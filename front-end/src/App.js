@@ -1,6 +1,16 @@
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [link, setLink] = useState('');
+  const handleChange = (e) =>{
+    setLink(e.target.value);
+  }
+  const handleClick = async (e) => {
+    console.log('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
+    const res = await fetch ('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
+    await res.json();
+  }
   return (
     <div className="App">
       <head>
@@ -31,8 +41,8 @@ function App() {
           <h1 class ='upload'>Video Upload</h1>
           <form action = "./" method = ''>
             <div class = "search-bar">
-              <input type="text" id = "link-input" class="search-bar-input" name="upload" placeholder="Upload Files"></input>
-              <button type = 'submit' class = 'search-bar-button'>
+              <input value={link} onChange={handleChange}type="text" id = "link-input" class="search-bar-input" name="upload" placeholder="Upload Files"></input>
+              <button onClick={handleClick} type = 'button' class = 'search-bar-button  '>
                 <i class = "material-icons">upload</i>
               </button>
             </div>
