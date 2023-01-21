@@ -22,7 +22,6 @@ class CoolClass:
                 ydl.download([video_info['webpage_url']])
         except youtube_dl.utils.DownloadError: 
             print('invalid URL!')  
-    
     def download_yt(self):
         song = input('Youtube link: ')
         self.download_file(song)
