@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .script import CoolClass
 
 def members(request):   
-    return HttpResponse("Hello world!")
+    return HttpResponse("eunha")
 
 def downloadyoutube(request):
     audio = CoolClass()
