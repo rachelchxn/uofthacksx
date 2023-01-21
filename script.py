@@ -22,9 +22,7 @@ class CoolClass:
                 ydl.download([video_info['webpage_url']])
         except youtube_dl.utils.DownloadError: 
             print('invalid URL!')
-        
-        
-
+           
 a = CoolClass()
 
 song = 'https://www.youtube.com/watch?v=vjplIOhE9So&ab_channel=ABOUTPOK%C3%A8MON'

@@ -6,7 +6,7 @@ import pandas as pd
 load_dotenv()
 
 # have to put api key in .env
-co = cohere.Client(os.getenv('API_KEY'))
+co = cohere.Client(os.getenv('API_KEY_COHERE'))
 
 # wikipedia page for machine learning
 prompt = f"""Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn', that is, methods that leverage data to improve performance on some set of tasks.[1] It is seen as a part of artificial intelligence.
@@ -53,3 +53,8 @@ def getSummary(prompt):
 
 getSummary(prompt)
 
+<<<<<<< HEAD
+=======
+for x in l:
+    print(x[0].text)
+>>>>>>> 8adf1d04803157276ae45d6586f9f6e0f7e4e856
