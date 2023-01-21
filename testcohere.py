@@ -30,7 +30,8 @@ Columbus made three further voyages to the Americas, exploring the Lesser Antill
 Columbus's expeditions inaugurated a period of exploration, conquest, and colonization that lasted for centuries, thus bringing the Americas into the European sphere of influence. The transfer of commodities, ideas, and people between the Old World and New World that followed his first voyage are known as the Columbian exchange. Columbus was widely celebrated in the centuries after his death, but public perception has fractured in the 21st century as scholars have given greater attention to the harms committed under his governance, particularly the beginning of the depopulation of Hispaniola's indigenous Taínos caused by mistreatment and Old World diseases, as well as by that people's enslavement. Many places in the Western Hemisphere bear his name, including the country of Colombia, the District of Columbia, and British Columbia."""
 
 def splitPrompt(prompt):
-    a = prompt.split('.')
+    a = iter(prompt.split('.'))
+    map(".".join,zip(*[a]*3)) 
     return a
 
 def getSummary(prompts):
@@ -65,15 +66,15 @@ def getSummary(prompts):
             df = df.drop_duplicates(subset=['generation'])
             # Sort by highest sum likelihood
             df = df.sort_values('likelihood', ascending=False, ignore_index=True)
-            ret.append(df.loc[0].generation)
+            ret.append(df.loc[0])
     except:
         print("error")
     return ret
 
-getSummary(prompt)
+a = sorted(getSummary(splitPrompt(prompt1)), key=lambda x: x.likelihood)
 
-<<<<<<< HEAD
-=======
-for x in l:
-    print(x[0].text)
->>>>>>> 8adf1d04803157276ae45d6586f9f6e0f7e4e856
+#a is sorted by likelihood
+for x in (a):
+    print(x.generation)
+    print('------------------')
+    print('\n')
