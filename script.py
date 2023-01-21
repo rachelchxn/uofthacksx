@@ -6,11 +6,6 @@ class CoolClass:
         self.options = {
             'format': 'bestaudio/best',
             'noplaylist': True,
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '192'
-            }],
             'keepvideo':False,
             'outtmpl': 'temp.mp3'
         }
@@ -28,8 +23,9 @@ class CoolClass:
         except youtube_dl.utils.DownloadError: 
             print('invalid URL!')
         
+        
 
 a = CoolClass()
 
 song = 'https://www.youtube.com/watch?v=vjplIOhE9So&ab_channel=ABOUTPOK%C3%A8MON'
-a.download_file(song)
+a.download_file(song)   
