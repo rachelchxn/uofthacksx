@@ -6,6 +6,8 @@ a = 'main concept'
 b = 'point'
 c = 'example'
 
+
+
 examples=[
   Example("So now moving onto functions", a),
   Example("Let's talk a bit more about the mitochondria", a),
@@ -29,7 +31,7 @@ examples=[
   Example("i.e. The user experience", c)
 ]
 
-def classify_notes(input):
+def classifyNotes(input):
     response = co.classify(
         model='large',  
         inputs=input,  
@@ -41,3 +43,24 @@ def classify_notes(input):
     return preds
 
 # use csv to give a lot of data
+
+def summarize(input):
+    prompt = f"""Passage: Alright, so the world has seemingly become utterly divided on this dress. What colours do you see? On one side we have team Black and Blue - on the other, team White and Gold.
+    TLDR: People disagree on the colour of this dress; some see Black and Blue, others see White and Gold
+    --
+    Passage: We asked on twitter and got hundreds of responses for both white and gold and black and blue. For what it’s worth, we both saw black and blue and thought this was a massive prank at first. So how can it be possible for people to see it so differently? It’s a phenomenon known as colour constancy.
+    TLDR: What worth seemed like a prank at first turned out to be a display of a phenomenon known as colour constancy.
+    --
+    Passage: Take this cube for example. The middle square on the top appears to be a shade of brown, while the one on the side looks much more orange. But in actuality, they are both the exact same colour. We promise we haven’t cheated here or done any trick photography.
+    TLDR: For example, middle square on the top of this cube appears to be a shade of brown, while the one on the side looks much more orange, but they are actually the same colour.
+    --
+    Passage: {input}
+    TLDR: """
+    response = co.generate( 
+        model='xlarge', 
+        prompt = prompt,
+        max_tokens=40, 
+        temperature=0.8,
+        stop_sequences=["--"])
+
+    return response.generations[0].text
