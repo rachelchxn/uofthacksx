@@ -71,9 +71,3 @@ def getSummary(prompts):
     return ret
 
 getSummary(prompt)
-
-<<<<<<< HEAD
-=======
-for x in l:
-    print(x[0].text)
->>>>>>> 8adf1d04803157276ae45d6586f9f6e0f7e4e856
