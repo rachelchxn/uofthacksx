@@ -1,5 +1,6 @@
 import requests
 import time
+import ffmpeg
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -63,3 +64,21 @@ def save_transcript(audio_url, filename):
         return transcript
     elif error:
         return error
+
+
+
+
+
+
+
+# import speech_recognition as sr
+
+# def speechToText(file):
+#     # initialize the recognizer
+#     AUDIO_FILE = file
+#     # use the audio file as the audio source                                        
+#     r = sr.Recognizer()
+#     with sr.AudioFile(AUDIO_FILE) as source:
+#             audio = r.record(source)  # read the entire audio file                  
+
+#             print("Transcription: " + r.recognize_google(audio))

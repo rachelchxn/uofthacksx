@@ -1,5 +1,6 @@
 import yt_dlp as youtube_dl
 import os
+import ffmpeg
 import uuid
 
 class CoolClass:
@@ -8,7 +9,7 @@ class CoolClass:
             'format': 'bestaudio/best',
             'noplaylist': True,
             'keepvideo':False,
-            'outtmpl': 'temp.mp3'
+            'outtmpl': 'temp.mp3',
         }
 
     def download_file(self,url):
@@ -30,3 +31,4 @@ def download_yt():
     file = audio.options['outtmpl']['default']
     return file
 # https://www.youtube.com/watch?v=1a8pI65emDE
+

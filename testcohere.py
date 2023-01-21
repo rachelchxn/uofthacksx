@@ -59,6 +59,7 @@ def getSummary(prompts):
                     sum_likelihood += t.likelihood
                 # Get sum of likelihoods
                 likelihoods.append(sum_likelihood)
+
             pd.options.display.max_colwidth = 200
             # Create a dataframe for the generated sentences and their likelihood scores
             df = pd.DataFrame({'generation':gens, 'likelihood': likelihoods})
@@ -71,10 +72,10 @@ def getSummary(prompts):
         print("error")
     return ret
 
-a = sorted(getSummary(splitPrompt(prompt1)), key=lambda x: x.likelihood)
+# a = sorted(getSummary(splitPrompt(prompt1)), key=lambda x: x.likelihood)
 
-#a is sorted by likelihood
-for x in (a):
-    print(x.generation)
-    print('------------------')
-    print('\n')
+# #a is sorted by likelihood
+# for x in (a):
+#     print(x.generation)
+#     print('------------------')
+#     print('\n')
