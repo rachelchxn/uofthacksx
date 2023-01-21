@@ -5,8 +5,7 @@ from cohere.classify import Example
 a = 'main concept'
 b = 'point'
 c = 'example'
-
-
+d = 'definition'
 
 examples=[
   Example("So now moving onto functions", a),
@@ -28,8 +27,25 @@ examples=[
   Example("The industrial revolution is an example of an important era", c),
   Example("John Smith is an example of an important theorist", c),
   Example("This topic is one of the topics that will appear on your midterm exam", c),
-  Example("i.e. The user experience", c)
+  Example("i.e. The user experience", c),
+  
+  Example("Electrons are stable subatomic particle with a charge of negative electricity, found in all atoms and acting as the primary carrier of electricity in solidsThe mitocondria is an organelle found in large numbers in most cells.",d),
+  Example("DNA is a self-replicating material that is present in nearly all living organisms as the main constituent of chromosomes. It is the carrier of genetic information",d),
+  Example("Photosynthesis is the process by which plants use sunlight, water, and carbon dioxide to create oxygen and energy in the form of sugar.",d),
+  Example("Science is the study of the universe around us and within us, natural phenomena, and solutions to problems. ",d),
+  Example("The scientific method is a process for gathering data and processing information",d)
 ]
+
+
+def extract(self, example):
+    extraction = co.generate(
+        model='large',
+        prompt=self.make_prompt(example),
+        max_tokens=10,
+        temperature=0.1,
+        stop_sequences=["\n"])
+    return(extraction.generations[0].text[:-1])
+
 
 def classifyNotes(input):
     response = co.classify(
@@ -41,6 +57,9 @@ def classifyNotes(input):
     for i in response.classifications:
         preds.append(i.prediction)
     return preds
+
+
+
 
 # use csv to give a lot of data
 
