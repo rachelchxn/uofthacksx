@@ -70,4 +70,6 @@ def getSummary(prompts):
         print("error")
     return ret
 
-getSummary(prompt)
+for x in (getSummary(splitPrompt(prompt1))):
+    print(x)
+    print('\n')
