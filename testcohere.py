@@ -1,6 +1,7 @@
 import cohere
 from dotenv import load_dotenv
 import os
+import pandas as pd
 
 load_dotenv()
 
@@ -18,13 +19,37 @@ Some implementations of machine learning use data and neural networks in a way t
 
 In its application across business problems, machine learning is also referred to as predictive analytics."""
 
-l = []
-for i in range(10):
-    response = co.generate(
+def getSummary(prompt):
+    prediction = co.generate(
+        model='xlarge',
         prompt=prompt,
-        max_tokens=40,
+        max_tokens=50,
+        num_generations=5,
+        temperature=0.5,
+        k=0,
+        p=1,
+        frequency_penalty=0,
+        presence_penalty=0,
+        stop_sequences=["--"],
+        return_likelihoods='GENERATION'
     )
-    l.append(response)
+    gens = []
+    likelihoods = []
+    for gen in prediction.generations:
+        gens.append(gen.text)
+        sum_likelihood = 0
+        for t in gen.token_likelihoods:
+            sum_likelihood += t.likelihood
+        # Get sum of likelihoods
+        likelihoods.append(sum_likelihood)
+    pd.options.display.max_colwidth = 200
+    # Create a dataframe for the generated sentences and their likelihood scores
+    df = pd.DataFrame({'generation':gens, 'likelihood': likelihoods})
+    # Drop duplicates
+    df = df.drop_duplicates(subset=['generation'])
+    # Sort by highest sum likelihood
+    df = df.sort_values('likelihood', ascending=False, ignore_index=True)
+    print(df.loc[0])
 
-for x in l:
-    print(x[0].text)
+getSummary(prompt)
+
