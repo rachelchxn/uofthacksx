@@ -9,15 +9,17 @@ load_dotenv()
 co = cohere.Client(os.getenv('API_KEY_COHERE'))
 
 # wikipedia page for machine learning
-prompt = f"""Machine learning (ML) is a field of inquiry devoted to understanding and building methods that 'learn', that is, methods that leverage data to improve performance on some set of tasks.[1] It is seen as a part of artificial intelligence.
+prompt = f"""Passage: Is Wordle getting tougher to solve? Players seem to be convinced that the game has gotten harder in recent weeks ever since The New York Times bought it from developer Josh Wardle in late January. The Times has come forward and shared that this likely isn't the case. That said, the NYT did mess with the back end code a bit, removing some offensive and sexual language, as well as some obscure words There is a viral thread claiming that a confirmation bias was at play. One Twitter user went so far as to claim the game has gone to "the dusty section of the dictionary" to find its latest words.
 
-Machine learning algorithms build a model based on sample data, known as training data, in order to make predictions or decisions without being explicitly programmed to do so.[2] Machine learning algorithms are used in a wide variety of applications, such as in medicine, email filtering, speech recognition, agriculture, and computer vision, where it is difficult or unfeasible to develop conventional algorithms to perform the needed tasks.[3][4]
+TLDR: Wordle has not gotten more difficult to solve.
+--
+Passage: ArtificialIvan, a seven-year-old, London-based payment and expense management software company, has raised $190 million in Series C funding led by ARG Global, with participation from D9 Capital Group and Boulder Capital. Earlier backers also joined the round, including Hilton Group, Roxanne Capital, Paved Roads Ventures, Brook Partners, and Plato Capital.
 
-A subset of machine learning is closely related to computational statistics, which focuses on making predictions using computers, but not all machine learning is statistical learning. The study of mathematical optimization delivers methods, theory and application domains to the field of machine learning. Data mining is a related field of study, focusing on exploratory data analysis through unsupervised learning.[6][7]
+TLDR: ArtificialIvan has raised $190 million in Series C funding.
+--
+Passage: The National Weather Service announced Tuesday that a freeze warning is in effect for the Bay Area, with freezing temperatures expected in these areas overnight. Temperatures could fall into the mid-20s to low 30s in some areas. In anticipation of the hard freeze, the weather service warns people to take action now.
 
-Some implementations of machine learning use data and neural networks in a way that mimics the working of a biological brain.[8][9]
-
-In its application across business problems, machine learning is also referred to as predictive analytics."""
+TLDR:"""
 
 prompt1 = f"""Christopher Columbus[a] (/kəˈlʌmbəs/;[3] born between 25 August and 31 October 1451, died 20 May 1506) was an Italian[b] explorer and navigator who completed four voyages across the Atlantic Ocean sponsored by the Catholic Monarchs of Spain, opening the way for the widespread European exploration and colonization of the Americas. His expeditions were the first known European contact with the Caribbean, Central America, and South America.
 
@@ -72,7 +74,7 @@ def getSummary(prompts):
         print("error")
     return ret
 
-# a = sorted(getSummary(splitPrompt(prompt1)), key=lambda x: x.likelihood)
+a = sorted(getSummary(splitPrompt(prompt)), key=lambda x: x.likelihood)
 
 # #a is sorted by likelihood
 # for x in (a):
