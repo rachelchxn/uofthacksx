@@ -45,22 +45,43 @@ def classifyNotes(input):
 # use csv to give a lot of data
 
 def summarize(input):
-    prompt = f"""Passage: Alright, so the world has seemingly become utterly divided on this dress. What colours do you see? On one side we have team Black and Blue - on the other, team White and Gold.
-    TLDR: People disagree on the colour of this dress; some see Black and Blue, others see White and Gold
+    prompt = f"""Passage: Alright, so the world has seemingly become utterly divided on this dress. What colours do you see? On one side we have team Black and Blue - on the other, team White and Gold
+    
+    TLDR: People disagree on the colour of this dress; some see Black and Blue, others see White and Gold. 
     --
-    Passage: We asked on twitter and got hundreds of responses for both white and gold and black and blue. For what it’s worth, we both saw black and blue and thought this was a massive prank at first. So how can it be possible for people to see it so differently? It’s a phenomenon known as colour constancy.
-    TLDR: What worth seemed like a prank at first turned out to be a display of a phenomenon known as colour constancy.
+    Passage: Take this cube for example. The middle square on the top appears to be a shade of brown, while the one on the side looks much more orange. But in actuality, they are both the exact same colour. We promise we haven’t cheated here or done any trick photography
+    
+    TLDR: For example, middle square on the top of this cube appears to be a shade of brown, while the one on the side looks much more orange, but they are actually the same colour. 
     --
-    Passage: Take this cube for example. The middle square on the top appears to be a shade of brown, while the one on the side looks much more orange. But in actuality, they are both the exact same colour. We promise we haven’t cheated here or done any trick photography.
-    TLDR: For example, middle square on the top of this cube appears to be a shade of brown, while the one on the side looks much more orange, but they are actually the same colour.
+    Passage: It's a question that has perplexed humanity from as early as the ancient Greeks, all the way to the 21st century. And we're still dying to know which came first the chicken or the egg. The question would be simple if we took it literally
+    
+    TLDR: A question that has perplexed humanity for ages is: which came first, the chicken or the egg? 
+    --
+    Passage: Our body is made up of trillions of cells. They all require energy to function. This energy is created within our cells in the mitochondria
+    
+    TLDR: Our body is made up of trillions of cells that all require energy made in the mitochondria to function. 
+    --
+    Passage: This continuous pumping creates a proton gradient where the positively charged protons are attracted to the more negative matrix. When the protons reenter the matrix through the ATP synthase protein complex they catalyze the production of ATP
+    
+    TLDR: Continuous pumping creates a proton gradient where protons are attracted to the more negative matrix. Protons catalyze ATP production when they reenter the matrix. 
+    --
+    Passage: Research suggests that the protein essential for the formation of chicken eggs, called ov 17, is only found in chicken ovaries. Without it, the chicken eggshell could not be formed. So without a chicken, you technically can't get a chicken egg
+    
+    TLDR: Research shows that ov 17, only found in chicken ovaries, is essential to the production of the chicken eggshell. 
+    --
+    Passage: Is Wordle getting tougher to solve? Players seem to be convinced that the game has gotten harder in recent weeks ever since The New York Times bought it from developer Josh Wardle in late January. The Times has come forward and shared that this likely isn't the case. That said, the NYT did mess with the back end code a bit, removing some offensive and sexual language, as well as some obscure words There is a viral thread claiming that a confirmation bias was at play. One Twitter user went so far as to claim the game has gone to "the dusty section of the dictionary" to find its latest words
+    
+    TLDR: Wordle has not gotten more difficult to solve. 
     --
     Passage: {input}
+    
     TLDR: """
+
     response = co.generate( 
         model='xlarge', 
         prompt = prompt,
-        max_tokens=40, 
-        temperature=0.8,
-        stop_sequences=["--"])
+        max_tokens=80, 
+        temperature=1,
+        stop_sequences=['--'])
 
     return response.generations[0].text
