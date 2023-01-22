@@ -33,11 +33,6 @@ function App() {
       </head>
   
       <section class = 'header'>
-          <div class = 'title1'>Too Long;</div>
-          <div class = 'title2'>Didn't Watch...</div>
-          <div class = 'subtitle'>Fully Developed by Jonathan Chen</div>
-          <div class = 'rectangle1'></div>
-          <div class = 'rectangle2'></div>
           <nav>
             <div class = 'logo-img'>
               <u1>  
@@ -54,30 +49,37 @@ function App() {
                 <li><a href = '/'>Home</a></li>
                 <li><a href = '#application'>Application</a></li>
                 <li><a href = '#process'>Process</a></li>
-                {/* <li><a href = '/'>Contact</a></li> */}
               </ul>
             </div>
           </nav>
 
           <div class='wrapper'>
 
-          <form onSubmit={handleClick} action = "./" method = ''>
-            <section class = 'input-output'>
-              <div class = "search-bar">
-                <h1 class ='upload'>Copy and Paste Link Here</h1>
-                <div class='input-wrapper'>
-                  <input value={link} onChange={handleChange} type="text" id = "link-input" class="search-bar-input" name="upload" placeholder="Past Youtube link here"></input>
-                  <button type = 'submit' class = 'search-bar-button'>
-                    <i class = "material-icons">upload</i>
-                  </button>
+          <div className='stupid'>
+            <div class = 'title1'>Too Long;</div>
+            <div class = 'title2'>Didn't Watch...</div>
+            <div class = 'subtitle'>Learn Smarter, Not Harder.</div>
+          </div>
+
+          <section class = 'input-output'>
+            <form onSubmit={handleClick} action = "./" method = ''>
+            <div class = "search-bar">
+                  <h1 class ='upload'>Copy and Paste Link Here</h1>
+                  <div class='input-wrapper'>
+                    <input value={link} onChange={handleChange} type="text" id = "link-input" class="search-bar-input" name="upload" placeholder="Past Youtube link here"></input>
+                    <button type = 'submit' class = 'search-bar-button'>
+                      <i class = "material-icons">upload</i>
+                    </button>
+                  </div>
                 </div>
-              </div>
+            </form>
+
               <div class = "output">
                 <h1 class = 'notes'>TL;DW</h1>
-                <textarea type = 'textarea' rows='18' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..." value={data["class_notes"]} />
+                <textarea type = 'textarea' rows='12' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..." value={data["class_notes"]+'\n'+data['keywords']} />
               </div>
-            </section>
-          </form>
+              <button className='button'>Download TL;DW as pdf</button>
+          </section>
 
           </div>
           

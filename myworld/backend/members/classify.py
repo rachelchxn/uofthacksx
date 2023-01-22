@@ -9,13 +9,14 @@ load_dotenv()
 co = cohere.Client(os.getenv('API_KEY_COHERE'))
 from cohere.classify import Example
 
-a = 'main concept'
-b = 'point'
-c = 'example'
-d = 'definition'
+a = 'Core Concept'
+b = 'Point'
+c = 'Example'
+d = 'Definition'
+e = 'Remove'
 
 examples=[
-  Example("So now moving onto functions", a),
+  Example("Our body is made up of trillions of cells that all require energy made in the mitochondria to function. ", a),
   Example("Let's talk a bit more about the mitochondria", a),
   Example("Speaking of the industrial revolution", a),
   Example("Next, we'll talk about the theory by John Smith", a),
@@ -33,14 +34,19 @@ examples=[
   Example("An example of a graph of a non-function is shown here", c),
   Example("The industrial revolution is an example of an important era", c),
   Example("John Smith is an example of an important theorist", c),
-  Example("This topic is an example of one that will appear on your midterm exam", c),
-  Example("i.e. The user experience", c),
+  Example("Take this cube for example. The middle square on the top appears to be a shade of brown, while the one on the side looks much more orange. But in actuality, they are both the exact same colour.", c),
+  Example("For example, take a look at this app's user experience", c),
   
   Example("Electrons are stable subatomic particle with a charge of negative electricity, found in all atoms and acting as the primary carrier of electricity in solidsThe mitocondria is an organelle found in large numbers in most cells.",d),
   Example("DNA is a self-replicating material that is present in nearly all living organisms as the main constituent of chromosomes. It is the carrier of genetic information",d),
   Example("Photosynthesis is the process by which plants use sunlight, water, and carbon dioxide to create oxygen and energy in the form of sugar.",d),
   Example("Science is the study of the universe around us and within us, natural phenomena, and solutions to problems. ",d),
-  Example("The scientific method is a process for gathering data and processing information",d)
+  Example("The scientific method is a process for gathering data and processing information",d),
+
+  Example("Want to learn more? Subscribe to our channel",e),
+  Example("Visit our website to learn more",e),
+  Example("Please subscribe and like this video",e),
+
 ]
 
 
@@ -67,21 +73,10 @@ def classifyNotes(input):
 
 
 
-
-# use csv to give a lot of data
-
 def summarize(input):
     prompt = f"""Passage: Alright, so the world has seemingly become utterly divided on this dress. What colours do you see? On one side we have team Black and Blue - on the other, team White and Gold
     
     TLDR: People disagree on the colour of this dress; some see Black and Blue, others see White and Gold. 
-    --
-    Passage: Take this cube for example. The middle square on the top appears to be a shade of brown, while the one on the side looks much more orange. But in actuality, they are both the exact same colour. We promise we haven’t cheated here or done any trick photography
-    
-    TLDR: For example, middle square on the top of this cube appears to be a shade of brown, while the one on the side looks much more orange, but they are actually the same colour. 
-    --
-    Passage: It's a question that has perplexed humanity from as early as the ancient Greeks, all the way to the 21st century. And we're still dying to know which came first the chicken or the egg. The question would be simple if we took it literally
-    
-    TLDR: A question that has perplexed humanity for ages is: which came first, the chicken or the egg? 
     --
     Passage: Our body is made up of trillions of cells. They all require energy to function. This energy is created within our cells in the mitochondria
     

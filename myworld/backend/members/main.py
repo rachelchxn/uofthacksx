@@ -54,7 +54,7 @@ def yt2var(link):
 
     for i in notes:
         content = i[1].split()
-        content.remove('--')
+        if '--' in content: content.remove('--')
         content.append('\n')
         text = ' '.join(content)
         join_note.append(i[0]+': '+text)

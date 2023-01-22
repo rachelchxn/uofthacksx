@@ -1,13 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
-# from .script import CoolClass
 from .main import *
-# from .models import Notes
-
-# class NotesView(viewsets.ModelViewSet):  
-#     serializer_class = TodoSerializer   
-#     queryset = Todo.objects.all()    
 
 def members(request):   
     print("hello")
@@ -25,3 +19,5 @@ def downloadyoutube(request):
         'keywords': keywords})
     return data
 
+def downloadpdf():
+    print('dlpdf')
