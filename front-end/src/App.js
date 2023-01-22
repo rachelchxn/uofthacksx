@@ -18,8 +18,8 @@ function App() {
         <link rel = "stylesheet" href = "App.css"></link>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet"></link>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet"></link>
       </head>
   
       <section class = 'header'>
@@ -29,16 +29,21 @@ function App() {
                 <a href = "index.html"><img src = ""></img></a>
               </u1>
             </div>
-            <div class = 'nav-bar'>
+            <div class = 'logo'>
               <ul>
-                <li><a href = ''>HOME</a></li>
-                <li><a href = ''>APPLICATION</a></li>
-                <li><a href = ''>PROCESS</a></li>
-                <li><a href = ''>CONTACT</a></li>
+                <li><a href = ''>TL;DW</a></li>
               </ul>
             </div>
+            <div class = 'nav-bar'>
+              <ul>
+                <li><a href = ''>Home</a></li>
+                <li><a href = '#application'>Application</a></li>
+                <li><a href = '#process'>Process</a></li>
+                <li><a href = ''>Contact</a></li>
+              </ul>
+            </div>
+            
           </nav>
-          <h1 class ='upload'>Video Upload</h1>
           <form action = "./" method = ''>
             <div class = "search-bar">
               <input value={link} onChange={handleChange}type="text" id = "link-input" class="search-bar-input" name="upload" placeholder="Upload Files"></input>
@@ -47,16 +52,17 @@ function App() {
               </button>
             </div>
           </form>
+          
       </section>
-      <section class = 'nav-application'>
+      <section id = 'application' class = 'nav-application'>
           <section class = 'application-title'>
             Real World Application
           </section>
           <section class = 'application-paragraph'>
-            This program allows for educational videos/lectures to be converted into notes. This allows students to be able to save time when writing down information. 
+            This program allows for educational videos/lectures to be converted into notes. Students will be able to save time!!!!!!!
           </section>
       </section>
-      <section class = 'nav-process'>
+      <section id = 'process' class = 'nav-process'>
           <section class = 'process-paragraph'>
             THE INFORMATION IS FED THROUGH COHERE AND THEN BOOM BAM NOTES!!!
           </section>
@@ -66,7 +72,7 @@ function App() {
       </section>
       <section class = 'our-team'>
         <section class = 'team-title'>
-          
+
         </section>
       </section>
     </div>
