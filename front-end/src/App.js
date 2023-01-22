@@ -2,17 +2,21 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
+
   const [link, setLink] = useState('');
   const [data, setData] = useState([])
   const handleChange = (e) =>{
     setLink(e.target.value);
   }
+  
   const handleClick = async (e) => {
     console.log('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const res = await fetch ('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const dat = await res.json();
     setData(dat);
+    console.log('my guy')
   }
+
   return (
     <div className="App">
       <head>
