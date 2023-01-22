@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 function App() {
   
   const [link, setLink] = useState('');
-  const [data, setData] = useState([])
+  const [data, setData] = useState({'class_notes': '', 'keywords': ''})
   
   useEffect(() => {
     }, [data])
@@ -17,7 +17,8 @@ function App() {
     console.log('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const res = await fetch ('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const dat = await res.json();
-    setData(dat);
+    setData(dat)
+    ;
   }
   return (
     <div className="App">
@@ -52,6 +53,7 @@ function App() {
             </div>
             
           </nav>
+
           <div class='wrapper'>
 
           <form onSubmit={handleClick} action = "./" method = ''>
@@ -67,7 +69,7 @@ function App() {
               </div>
               <div class = "output">
                 <h1 class = 'notes'>TL;DW</h1>
-                <textarea type = 'textarea' rows='8' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..." value={data["class_notes"]} />
+                <textarea type = 'textarea' rows='8' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..." value={data["class_notes"]+'\n\nKeywords: '+ data['keywords']} />
               </div>
             </section>
           </form>
