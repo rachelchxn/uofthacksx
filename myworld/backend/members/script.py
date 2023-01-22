@@ -20,6 +20,8 @@ class CoolClass:
             self.options['outtmpl'] = originalfilename
             with youtube_dl.YoutubeDL(self.options) as ydl:
                 ydl.download([video_info['webpage_url']])
+            file = self.options['outtmpl']['default']
+            return file
         except youtube_dl.utils.DownloadError: 
             print('invalid URL!')  
     
