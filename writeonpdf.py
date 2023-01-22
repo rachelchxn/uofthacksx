@@ -1,14 +1,38 @@
 from fpdf import FPDF
 
-pdf = FPDF()
+class PDF(FPDF):
+    def header(self):
+        # Logo
+        self.image('front-end/images/logo.png', 10, 8, 33)
+        # Arial bold 15
+        self.set_font('Arial', 'B', 15)
+        # Move to the right
+        self.cell(80)
+        # Title
+        self.cell(30, 10, 'Insert Youtube Title', 1, 0, 'C')
+        # Line break
+        self.ln(20)
 
+    # Page footer
+    def footer(self):
+        # Position at 1.5 cm from bottom
+        self.set_y(-15)
+        # Arial italic 8
+        self.set_font('Arial', 'I', 8)
+        # Page number
+        self.cell(0, 10, 'Page ' + str(self.page_no()) + '/{nb}', 0, 0, 'C')
+
+# Instantiation of inherited class
+pdf = PDF()
+pdf.alias_nb_pages()
 pdf.add_page()
+pdf.set_font('Times', '', 12)
 
-pdf.set_font("Arial","B",16)
+text = [['definition', 'Our bodies run on energy. Even as you sit watching this, your body is generating enough energy to power 710 watt light bulbs. Most of that energy is provided by tiny structures called mitochondria present inside our cells.'], ['definition', "These mitochondria are the powerhouses of a human body. They take fat, sugar, and protein from our food and combine it with oxygen oxygen, converting it into energy for our cells and tissues such as brain and muscle, mitochondria have their own DNA that's crucial to this energy conversion process."], ['point', 'This is different to the DNA found in the nucleus. While nuclear DNA determines our physical characteristics, mitochondrial DNA does not. But both types of DNA must be healthy for the mitochondria to function effectively.'], ['example', 'Faults in either can cause mitochondria to stop working properly, preventing them from converting fuel into energy.'], ['point', 'If the number of 40 mitochondria reaches a critical level, our cells begin to run out of energy, fail, and even die. Since mitochondria performs so many different functions, there are literally hundreds of different mitochondrial diseases.'], ['point', 'The effects include fatigue, speech disorders, hearing difficulties, muscle weakness, heart problems, liver disease, bowel problems, and sometimes, in very severe cases, it may even be fatal.'], ['point', "The sheer variety of symptoms associated with mitochondrial disease makes it hard to diagnose. Despite this, we're making rapid advances every day in our understanding of how it develops and is passed on. All of which help us to devise new strategies to prevent and treat the disease in the future."], ['main concept', 'To learn more about mitochondrial disease, please visit our website.'], ['example', ' Our bodies run on energy. Even as you sit watching this, your body is generating enough energy to power 710 watt light bulbs. Most of that energy is provided by tiny structures called mitochondria present inside our cells. \n    --'], ['definition', " Mitochondria take fat, sugar, and protein from our food and combine it with oxygen, converting it into energy for our cells and tissues such as brain and muscle. Mitochondria have their own DNA that's crucial to this energy conversion process. This is different to the DNA found in the nucleus. \n    --"], ['example', ' Faults in either type of DNA can cause mitochondria to stop working properly, preventing them from converting fuel into energy. \n    --'], ['point', ' If the number of 40 mitochondria reaches a critical level, our cells run out of energy, fail, and even die. There are literally hundreds of different mitochondrial diseases. The effects include fatigue, speech disorders, hearing difficulties, muscle weakness, heart problems, liver disease, bowel problems, and sometimes, in very severe cases, it may even be fatal. \n    --'], ['main concept', ' Mitochondrial disease is hard to diagnose, but new research helps us understand it better, which helps us devise new treatments\n    --'], ['main concept', ' To learn more about mitochondrial disease, please visit our website. \n    --']]
 
-text = [' Adderall is a mixture of amphetamine salts that was developed for treatment of attention deficit hyperactivity disorder. \n    --', ' The amphetamine salts in Adderall are closely related to methamphetamine, and Adderall is a stimulant. When Adderall is ingested, it takes effect on the brain within an hour of use. \n    --', ' Adderall increases the effect of serotonin and dopamine in patients with ADHD, whose brain is constantly seeking out stimulants. \n    --', ' Adderall essentially tricks the brain into releasing more dopamine and serotonin, making the user feel more focused and alert. \n    --', " Adderall helped students without ADHD improve their grades in the short term, but it didn't help their academic performance in the long term. \n    --", ' In the third round, participants were given ten milligrams of Adderall, but were told it was a placebo. Finally, they were given a placebo and told it was a placebo. The groups that did the best were those who thought they had taken Adderall, regardless of whether they had or not\n    --', ' In fact, the group that did the worst were those who took Adderall but was told it was placebo. \n    --', ' Adderall is similar to meth in chemical structure and is also addictive. \n    --', ' The long-term effects of Adderall use include the inability to feel pleasure without a chemical stimulant, as well as the risk of developing addiction. \n    --', ' Adderall is an addictive drug. As a society, we need to put measures in place to protect people. \n    --', " If you're looking for study tips and advice, check out our videos about scientific study tips and advice! \n    --", " We'll put some more videos below. Make sure you're subscribed for a new video next Thursday.\n    \n     End of passage 1.\n\n===Visualization===\n\nThe user interface for explaining the Passage-Agnostic Word Embedding (PAVE) model. In the PAVE user interface, a PAVE word embedding is first initialized", ' Bye. \n    --']
-for i in text:
-    pdf.write(4," ")
-    pdf.write(8, i +"HI")
-
-pdf.output("creating-pdfs/Hi.pdf")
+textsorted = sorted(text)
+print(textsorted)
+for i in range(len(textsorted)):
+    pdf.write(8,textsorted[i][1])
+    pdf.write(8,"")
+pdf.output("creating-pdfs/cool2.pdf")
