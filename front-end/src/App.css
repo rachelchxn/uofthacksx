@@ -1,6 +1,7 @@
 *{
   margin: 0;
   font-family: 'Roboto Mono', monospace;
+  scroll-behavior: smooth;
 }
 .App {
   text-align: center;
@@ -64,6 +65,10 @@ nav{
   text-align: right;
 }
 
+p {
+  color: #eee;
+}
+
 .nav-bar ul li{
   list-style: none;
   display: inline-block;
@@ -84,7 +89,7 @@ nav{
   text-decoration: none;
   font-size: 18px;
   color: #49c5b6;
-
+  font-weight: 800;
 }
 .nav-bar ul li::after{
   content:'';
@@ -118,6 +123,7 @@ h1{
 
 .search-bar-input, .output-bar{
   width: 100%;
+  max-width: 100%;
   padding: 10px;
   outline: none;
   box-sizing: border-box;
@@ -138,11 +144,11 @@ h1{
 }
 
 
-.output-title{
+/* .output-title{
   left: -11.8%;
   padding-top: 2%;
   position: relative;
-}
+} */
 
 .search-bar-button{
   height: 47px;
@@ -166,60 +172,45 @@ h1{
   color: blue;
 }
 
-.nav-application {
-  width: 100%;
-  background-color: #49c5b6;
-  text-align: center;
-  height: 50vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
 
 .application-title{
+  max-width: 40vw;
   font-size: 60px;
-  color: #000;
-  text-align: center;
+  color: rgb(32, 32, 32);
+  text-align: left;
   font-weight: bold;
-  flex: 1;
-  padding-left: 15%;
 }
 
 .application-paragraph{
   font-size: 20px;
+  max-width: 40vw;
   text-align: left;
-  padding-right: 10%;
-  padding-left: 5%;
 }
 
-.nav-process{
-  width: 100%;
-  background-color: #fff;
-  text-align: center;
+#application {
+  background-color: #49c5b6;
+
+}
+.info-container {
+  padding: 10vw;
+  background-color: rgb(32, 32, 32);
   height: 50vh;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  position: relative;
+  justify-content: space-between;
 }
 
-.process-title{
+.process-title {
   font-size: 60px;
+  max-width: 40vw;
   color: #49c5b6;
-  text-align: center;
+  text-align: right;
   font-weight: bold;
-  flex: 1;
-  padding-right: 15%;
 }
 
 .process-paragraph{
   font-size: 20px;
   text-align: left;
-  padding-right: 5%;
-  padding-left: 10%;
   color: #49c5b6;
 }
 
