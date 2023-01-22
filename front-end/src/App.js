@@ -10,7 +10,8 @@ function App() {
   const handleClick = async (e) => {
     console.log('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const res = await fetch ('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
-    setData(await res.json())
+    const dat = await res.json();
+    setData(dat);
   }
   return (
     <div className="App">
