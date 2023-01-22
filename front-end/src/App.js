@@ -45,12 +45,20 @@ function App() {
             
           </nav>
           <form action = "./" method = ''>
-            <div class = "search-bar">
-              <input value={link} onChange={handleChange}type="text" id = "link-input" class="search-bar-input" name="upload" placeholder="Upload Files"></input>
-              <button onClick={handleClick} type = 'button' class = 'search-bar-button  '>
-                <i class = "material-icons">upload</i>
-              </button>
-            </div>
+
+            <section class = 'input-output'>
+              <div class = "search-bar">
+                <h1 class ='upload'>Copy and Paste Link Here</h1>
+                <input value={link} onChange={handleChange}type="text" id = "link-input" class="search-bar-input" name="upload" placeholder="Upload Files"></input>
+                <button type = 'submit' class = 'search-bar-button'>
+                  <i class = "material-icons">upload</i>
+                </button>
+              </div>
+              <div class = "output">
+                <h1 class = 'notes'>Transcripted notes:</h1>
+                <input type = 'text' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..."></input>
+              </div>
+            </section>
           </form>
           
       </section>
