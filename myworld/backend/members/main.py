@@ -45,9 +45,22 @@ def yt2var(link):
 
     keywords = list(dict.fromkeys(keywordify(classifieds, summarized_array)))
 
-    class_notes = []
+    notes = []
 
     for i in summarized_array:
-        class_notes.append([classifieds[summarized_array.index(i)], i])
+        notes.append([classifieds[summarized_array.index(i)], i])
+    
+    join_note = []
+
+    for i in notes:
+        content = i[1].split()
+        content.remove('--')
+        content.append('\n')
+        text = ' '.join(content)
+        join_note.append(i[0]+': '+text)
+
+    class_notes =  '\n'.join(join_note)
+
+
 
     return class_notes, keywords, title

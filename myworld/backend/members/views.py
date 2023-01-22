@@ -21,7 +21,7 @@ def downloadyoutube(request):
     print('keywords', keywords)
     print(title)
     data = JsonResponse({'title': title, 
-             'class_notes': class_notes, 
-              'keywords': keywords})
+        'class_notes': class_notes, 
+        'keywords': keywords})
     return data
 
