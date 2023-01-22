@@ -1,8 +1,11 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+import Logo from './imgs/logo.png'
+import PDF from './imgs/tldw.pdf'
 
 function App() {
   const [link, setLink] = useState('');
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({'class_notes': '', 'keywords': ''})
   
   useEffect(() => {
@@ -14,11 +17,12 @@ function App() {
   
   const handleClick = async (e) => {
     e.preventDefault()
+    setLoading(true)
     console.log('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const res = await fetch ('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const dat = await res.json();
     setData(dat);
-  
+    setLoading(false)
   }
 
   return (
@@ -34,14 +38,9 @@ function App() {
   
       <section class = 'header'>
           <nav>
-            <div class = 'logo-img'>
-              <u1>  
-                <a href = "index.html"><img src = ""></img></a>
-              </u1>
-            </div>
             <div class = 'logo'>
               <ul>
-                <li><a href = '/'>TL;DW</a></li>
+                <li><a href = '/'><img className='logo' src={Logo} /></a></li>
               </ul>
             </div>
             <div class = 'nav-bar'>
@@ -78,7 +77,7 @@ function App() {
                 <h1 class = 'notes'>TL;DW</h1>
                 <textarea type = 'textarea' rows='12' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..." value={data["class_notes"]+'\n'+data['keywords']} />
               </div>
-              <button className='button'>Download TL;DW as pdf</button>
+              <a href={PDF} download='tldw.pdf'><button className='button' >Download TL;DW as pdf</button></a>
           </section>
 
           </div>
@@ -90,12 +89,12 @@ function App() {
               Real World Application
             </section>
             <section class = 'application-paragraph'>
-              This program allows for educational videos/lectures to be converted into notes. Students will be able to save time!!!!!!!
+              TLDW - Too Long; Didn't Watch is a simple and convenient web application that turns Youtube and user-uploaded videos into organized notes. It saves you time by turning long-form educational content into organized and digestible text so you can learn smarter, not harder.
             </section>
         </section>
         <section id = 'process' class = 'info-container'>
             <section class = 'process-paragraph'>
-              THE INFORMATION IS FED THROUGH COHERE AND THEN BOOM BAM NOTES!!!
+              First, our program either takes in a youtube link and converts it into an MP3 file or prompts the user to upload their own MP3 file. The audio file is then transcribed with Assembly AI's transcription API. The text transcription is then fed into Co:here's Generate, then Classify, then Generate again summarize the text, organize by type of point (main concept, point, example, definition), and extract keywords. The Python backend built with Django is connected to a ReactJS frontend for an optimal user experience.
             </section>
             <section class = 'process-title'>
               The Process

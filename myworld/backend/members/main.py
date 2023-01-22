@@ -39,16 +39,22 @@ def yt2var(link):
         return summarized_array
 
     summarized_array = sum_array(transcript_array)
+    
 
     classifieds = classifyNotes(summarized_array)
+    
+    sum_notes = []
+    for i in summarized_array:
+        sum_notes.append([classifieds[summarized_array.index(i)], i])
 
+    keylist, new_array = keywordify(classifieds, summarized_array)
 
-    keywords = list(dict.fromkeys(keywordify(classifieds, summarized_array)))
-
+    keywords = list(dict.fromkeys(keylist))
+    
     notes = []
 
-    for i in summarized_array:
-        notes.append([classifieds[summarized_array.index(i)], i])
+    for i in new_array:
+        notes.append([classifieds[new_array.index(i)], i])
     
     join_note = []
 
@@ -63,4 +69,4 @@ def yt2var(link):
 
 
 
-    return class_notes, keywords, title
+    return class_notes, keywords, title, sum_notes

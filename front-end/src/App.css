@@ -235,6 +235,10 @@ h1{
   background-color: #49c5b6;
 
 }
+
+.logo {
+  height: 5vh;
+}
 .info-container {
   padding: 10vw;
   background-color: rgb(32, 32, 32);
@@ -253,6 +257,7 @@ h1{
 }
 
 .process-paragraph{
+  max-width: 40vw;
   font-size: 20px;
   text-align: left;
   max-width: 40vw;

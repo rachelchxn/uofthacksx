@@ -26,12 +26,23 @@ def extract(input):
 
     return response.generations[0].text
 
+async def removify(preds, array):
+    indices = [i for i, x in enumerate(preds) if x == "Remove"]
+
 def keywordify(preds, array):
-    indices = [i for i, x in enumerate(preds) if x == "definition"]
+    indices_def = [i for i, x in enumerate(preds) if x == "Definition" or "Core Concept"]
+    
     output = []
-    for i in indices:
+    for i in indices_def:
         output.append(array[int(i)])
+    
     keywords = []
     for i in output:
         keywords.append(extract(i))
-    return keywords
+    indices_rem = [i for i, x in enumerate(preds) if x == "Remove"]
+    
+    output2 = array
+    for i in indices_rem:
+        output2.pop(i)
+    
+    return keywords, output2
