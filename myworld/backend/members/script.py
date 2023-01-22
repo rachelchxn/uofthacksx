@@ -16,12 +16,13 @@ class CoolClass:
             video_info = youtube_dl.YoutubeDL().extract_info(
                 url = url, download=False
             )
+            video_title = video_info['title']
             originalfilename = str(uuid.uuid4())+'.mp3'
             self.options['outtmpl'] = originalfilename
             with youtube_dl.YoutubeDL(self.options) as ydl:
                 ydl.download([video_info['webpage_url']])
             file = self.options['outtmpl']['default']
-            return file
+            return file, video_title
         except youtube_dl.utils.DownloadError: 
             print('invalid URL!')  
     

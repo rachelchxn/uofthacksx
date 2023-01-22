@@ -7,7 +7,7 @@ def yt2var(link):
 
     audio = CoolClass()
 
-    filename = audio.download_file(link)
+    filename, title = audio.download_file(link)
 
     def transcribe(filename):
         audio_url = upload(filename)
@@ -50,4 +50,4 @@ def yt2var(link):
     for i in summarized_array:
         class_notes.append([classifieds[summarized_array.index(i)], i])
 
-    return class_notes, keywords
+    return class_notes, keywords, title
