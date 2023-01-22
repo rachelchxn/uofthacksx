@@ -1,13 +1,20 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
+  
+
   const [link, setLink] = useState('');
   const [data, setData] = useState([])
+  
+  useEffect(() => {
+    }, [data])
+  
   const handleChange = (e) =>{
     setLink(e.target.value);
   }
   const handleClick = async (e) => {
+    e.preventDefault()
     console.log('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const res = await fetch ('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const dat = await res.json();
@@ -61,7 +68,8 @@ function App() {
               </div>
               <div class = "output">
                 <h1 class = 'notes'>TL;DW</h1>
-                <textarea type = 'textarea' rows='5' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..." value={data[1]} />
+                <textarea type = 'textarea' rows='5' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..." value={data["notes"]} />
+                <p>{data["notes"]}</p>
               </div>
             </section>
           </form>
