@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 
 function App() {
   
-  console.log("where??????????????????")
   const [link, setLink] = useState('');
   const [data, setData] = useState([])
   
@@ -18,8 +17,7 @@ function App() {
     console.log('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const res = await fetch ('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const dat = await res.json();
-    setData(dat)
-    console.log("HERE IS DATA:", data);
+    setData(dat);
   }
   return (
     <div className="App">
@@ -55,8 +53,8 @@ function App() {
             
           </nav>
           <div class='wrapper'>
-          <form onSubmit={handleClick} action = "./" method = ''>
 
+          <form onSubmit={handleClick} action = "./" method = ''>
             <section class = 'input-output'>
               <div class = "search-bar">
                 <h1 class ='upload'>Copy and Paste Link Here</h1>
@@ -73,6 +71,7 @@ function App() {
               </div>
             </section>
           </form>
+
           </div>
           
       </section>
