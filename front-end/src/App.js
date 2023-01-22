@@ -31,9 +31,14 @@ function App() {
       </head>
   
       <section class = 'header'>
+          <div class = 'title1'>Too Long;</div>
+          <div class = 'title2'>Didn't Watch...</div>
+          <div class = 'subtitle'>Fully Developed by Jonathan Chen</div>
+          <div class = 'rectangle1'></div>
+          <div class = 'rectangle2'></div>
           <nav>
             <div class = 'logo-img'>
-              <u1>
+              <u1>  
                 <a href = "index.html"><img src = ""></img></a>
               </u1>
             </div>
@@ -50,7 +55,6 @@ function App() {
                 {/* <li><a href = '/'>Contact</a></li> */}
               </ul>
             </div>
-            
           </nav>
           <div class='wrapper'>
 
@@ -67,7 +71,7 @@ function App() {
               </div>
               <div class = "output">
                 <h1 class = 'notes'>TL;DW</h1>
-                <textarea type = 'textarea' rows='8' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..." value={data["class_notes"]} />
+                <textarea type = 'textarea' rows='18' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..." value={data["class_notes"]} />
               </div>
             </section>
           </form>
