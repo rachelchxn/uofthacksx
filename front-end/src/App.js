@@ -3,13 +3,14 @@ import { useState } from 'react';
 
 function App() {
   const [link, setLink] = useState('');
+  const [data, setData] = useState([])
   const handleChange = (e) =>{
     setLink(e.target.value);
   }
   const handleClick = async (e) => {
     console.log('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
     const res = await fetch ('http://127.0.0.1:8000/downloadyoutube/?link=' + link);
-    await res.json();
+    setData(await res.json())
   }
   return (
     <div className="App">
@@ -44,22 +45,26 @@ function App() {
             </div>
             
           </nav>
-          <form action = "./" method = ''>
+          <div class='wrapper'>
+          <form onSubmit={handleClick} action = "./" method = ''>
 
             <section class = 'input-output'>
               <div class = "search-bar">
                 <h1 class ='upload'>Copy and Paste Link Here</h1>
-                <input value={link} onChange={handleChange}type="text" id = "link-input" class="search-bar-input" name="upload" placeholder="Upload Files"></input>
-                <button type = 'submit' class = 'search-bar-button'>
-                  <i class = "material-icons">upload</i>
-                </button>
+                <div class='input-wrapper'>
+                  <input value={link} onChange={handleChange} type="text" id = "link-input" class="search-bar-input" name="upload" placeholder="Past Youtube link here"></input>
+                  <button type = 'submit' class = 'search-bar-button'>
+                    <i class = "material-icons">upload</i>
+                  </button>
+                </div>
               </div>
               <div class = "output">
-                <h1 class = 'notes'>Transcripted notes:</h1>
-                <input type = 'text' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..."></input>
+                <h1 class = 'notes'>TL;DW</h1>
+                <textarea type = 'textarea' rows='5' id = 'output-text' class = 'output-bar' name = 'output1' placeholder  = "Converted notes..." value={data[1]} />
               </div>
             </section>
           </form>
+          </div>
           
       </section>
       <section id = 'application' class = 'nav-application'>

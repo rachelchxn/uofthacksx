@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .script import CoolClass
+# from .script import CoolClass
 from .main import *
-from .models import Notes
+# from .models import Notes
 
 # class NotesView(viewsets.ModelViewSet):  
 #     serializer_class = TodoSerializer   
@@ -17,5 +17,6 @@ def downloadyoutube(request):
     print(class_notes)
     print('keywords', keywords)
     print(title)
-    return HttpResponse('worked')
+    data = [title, class_notes, keywords]
+    return data
 

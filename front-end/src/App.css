@@ -1,6 +1,5 @@
 *{
   margin: 0;
-  padding: 0;
   font-family: 'Roboto Mono', monospace;
 }
 .App {
@@ -18,8 +17,18 @@
   }
 }
 
+.wrapper {
+  width: 80vw;
+  margin: auto;
+  margin-top: 10vw;
+}
+
+li {
+  list-style: none;
+}
+
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(64, 64, 64);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,7 +43,7 @@
 }
 
 .header {
-  background-color: #000;
+  background-color: rgb(32, 32, 32);
   width: 100%;
   min-height: 100vh;
   background-position: center;
@@ -48,7 +57,7 @@ nav{
   padding: 2% 6%;
   justify-content: space-between;
   align-items: right;
-  
+  background-color: #283231;
 }
 .nav-bar{
   flex: 1;
@@ -62,6 +71,7 @@ nav{
   padding: 8px 15px;
   background: none;
 }
+
 .logo li a{
   text-decoration: none;
   font-size: 36px;
@@ -99,51 +109,35 @@ nav{
 }
 
 h1{
-  color: #c7fff9;
+  color: #49c5b6;
   font-size: 16px;
-  padding-bottom: 5px;
-  position: relative;
-  left: 50%;
-  width: 20%;
-}
-.upload{
-  padding-top: 5vh;
-
+  text-align: left;
+  padding: 16px auto;
+  margin-bottom: 16px;
 }
 
-.search-bar-input{
-  flex-grow: 1;
+.search-bar-input, .output-bar{
+  width: 100%;
   padding: 10px;
-  padding-right: 300px;
   outline: none;
-  border: 5px solid #49c5b6;
+  box-sizing: border-box;
+  border: 3px solid #49c5b6;
   border-radius: 5px 0 0 5px;
-  border-right: 2px solid transparent;
-  background:#fff;
+  background:rgb(32, 32, 32);
   transition: background 0.25s, box-shadow 0.25s; 
+  color: #eee;
 }
-.search-bar-input:focus{
-  background: rgba(255, 255, 255, 0.845);
+.input-wrapper{
+  width: 100%;
+  display: flex;
+  margin-bottom: 24px;
+}
+.search-bar-input:focus, .output-bar:focus{
+  background: #283231;
   box-shadow: 0 0 2px rgba(255, 255, 255, 0.845);;
 }
 
-.search-bar-input::placeholder{
-  color: #49c5b6;
-  font-weight: bold;
-  text-align:start;
-}
-.output-bar{
-  flex-grow: 1;
-  padding: 10px;
-  padding-right: 300px;
-  outline: none;
-  border: 5px solid #49c5b6;
-  border-radius: 5px 0 0 5px;
-  position: relative;
-  top: 15px;
-  height: 300px;
-  left: 15%
-}
+
 .output-title{
   left: -11.8%;
   padding-top: 2%;
@@ -154,11 +148,9 @@ h1{
   height: 47px;
   width: 47px;
   position: relative;
-  left: -3px;
-  bottom: -5px;
-  border-radius: 5px 0 0 5px;
+  box-sizing: border-box;
+  border-radius: 3px 0 0 5px;
   border: 5px solid #49c5b6;
-  border-left: 2px solid transparent;
   background-color: white;
 }
 .material-icons {
